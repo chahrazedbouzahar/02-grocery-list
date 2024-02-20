@@ -1,14 +1,11 @@
 import './App.css';
 import groceryCartImg from './assets/grocery-cart.png';
-
-
-
 import { useState, useEffect } from "react"
 
 
 
 function App() {
-  // Initialize groceryItems state with stored items from local storage
+  
   const [inputValue, setInputValue] = useState("");
   const [groceryItems, setGroceryItems] = useState(
     JSON.parse(localStorage.getItem("groceryItems")) || []
@@ -73,12 +70,12 @@ function App() {
     setGroceryItems(updatedGroceryList);
   };
 
-  // Save groceryItems to local storage whenever it changes
+  
   useEffect(() => {
     localStorage.setItem("groceryItems", JSON.stringify(groceryItems));
   }, [groceryItems]);
 
-  // Clear local storage when all items are completed
+  
   useEffect(() => {
     if (isCompleted) {
       localStorage.removeItem("groceryItems");
@@ -115,13 +112,13 @@ function App() {
   };
 
   const handleResetGroceryList = () => {
-    // Show a confirmation dialog before resetting
+    
     const confirmReset = window.confirm(
       "Are you sure you want to clear the list? This will delete all your items."
     );
   
     if (confirmReset) {
-      // Clear the grocery list and local storage
+      
       setGroceryItems([]);
       localStorage.removeItem("groceryItems");
     }
@@ -160,7 +157,7 @@ function App() {
             cursor: 'pointer',
             borderRadius: '5px',
           }}
-        >clear List</button>
+        >Clear List</button>
       </div>
     </main>
   );
